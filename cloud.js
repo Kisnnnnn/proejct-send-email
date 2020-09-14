@@ -65,6 +65,18 @@ AV.Cloud.define('sendEmailwarning', function (request) {
   console.log(d);
   return api.getAllUsers().then(async users => {
     let projectList = await api.getCurrWeekReport();
+    let userData = users.filter(({
+      teamLeader
+    }) => teamLeader != 4);
+
+    userData = userData.map(({
+      displayName
+    }) => {
+      return {
+        name: displayName,
+        value: 0
+      }
+    });
 
     console.log(projectList);
     console.log('=======================');
@@ -72,6 +84,11 @@ AV.Cloud.define('sendEmailwarning', function (request) {
     console.log('未提交用户为:');
     console.log(JSON.stringify(users, 0, 4));
 
+    projectList.forEach(item => {
+      let data = personData.find(item => item.name);
+      data.value += Number(item.weekTime)
+    });
+    console.log(userData);
     // post(
     //   querystring.stringify({
     //     type: 'all',

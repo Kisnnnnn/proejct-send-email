@@ -6,35 +6,14 @@ module.exports = {
     return new AV.Query('_User').find();
   },
   getCurrWeekReport() {
-    const today = new Date();
-    const day = today.getDay();
-    const date = today.getDate();
-    const isoDay = day === 0 ? 7 : day;
-
-    let startDate = new Date();
-    let endDate = new Date();
-
-    startDate.setDate(date - isoDay + 1);
-    startDate.setHours(0);
-    startDate.setMinutes(0);
-    startDate.setSeconds(0);
-    startDate.setMilliseconds(0);
-
-    endDate.setDate(date + (7 - isoDay));
-    endDate.setHours(23);
-    endDate.setMinutes(59);
-    endDate.setSeconds(59);
-    endDate.setMilliseconds(999);
-
-    console.log('本周开始时间：' + startDate);
-    console.log('本周结束时间：' + endDate);
-
-    let q = new AV.Query('Logs');
-
-    q.greaterThanOrEqualTo('updatedAt', startDate);
-    q.lessThanOrEqualTo('updatedAt', endDate);
-
-    return q.find();
+    const porjectAPI = new AV.Query('projectList');
+    
+    porjectAPI.equalTo('isArchive', false);
+    return porjectAPI.find().then((reponse) => {
+      return reponse.map(item => Object.assign({}, item._serverData, {
+        id: item.id
+      }))
+    });
   },
   getUnSubmitUsers() {
     return Promise.all([this.getAllUsers(), this.getCurrWeekReport()]).then(
