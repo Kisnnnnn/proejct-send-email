@@ -38,10 +38,14 @@ module.exports = {
 
   },
   emptyWeekReport() {
-    const weekAPI = AV.Object.createWithoutData('weekTimeList');
-    weekAPI.set('weekData', []);
+    const query = new AV.Query('weekTimeList');
     
-    return weekAPI.save();
+    return query.find().then((todos) => {
+      todos.forEach((todo) => {
+        todo.set('weekData', []);
+      });
+      AV.Object.saveAll(todos);
+    });
   },
   getUnSubmitUsers() {
     return Promise.all([this.getAllUsers(), this.getCurrWeekReport()]).then(
