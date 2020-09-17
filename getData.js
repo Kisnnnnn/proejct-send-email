@@ -3,12 +3,15 @@ let Promise = require('bluebird');
 
 module.exports = {
   getAllUsers() {
+    console.log('user');
     return new AV.Query('_User').find();
   },
   getCurrWeekReport() {
+    console.log('projectList');
     const porjectAPI = new AV.Query('projectList');
     
     porjectAPI.equalTo('isArchive', false);
+    
     return porjectAPI.find().then((reponse) => {
       return reponse.map(item => Object.assign({}, item._serverData, {
         id: item.id
