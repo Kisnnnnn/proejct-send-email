@@ -83,7 +83,7 @@ AV.Cloud.define('sendEmailwarning', function (request) {
     projectList.forEach(item => {
       let data = userData.find(useritem => useritem.name == item.developer);
       data.value += Number(item.weekTime)
-      data.project += item.projectName + ','
+      data.project += item.projectName+'-'+item.weekTime + 'H,'
     });
 
     api.saveWeekTimeReport(userData, d).then(() => {
