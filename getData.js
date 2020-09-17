@@ -21,6 +21,33 @@ module.exports = {
       }))
     });
   },
+  // 保存本周工时
+  saveWeekTimeReport(userData, d) {
+    const week = AV.Object.extend('weekTimeList');
+    const weekAPI = new week();
+    const data = {
+      date: d,
+      weekData: userData
+    };
+
+    weekAPI.set(rtn);
+    return weekAPI.save().then((resData) => {
+      return resData
+    }, (error) => {});
+
+  },
+  emptyWeekReport() {
+    console.log('projectList');
+    const porjectAPI = new AV.Query('projectList');
+
+    porjectAPI.equalTo('isArchive', false);
+
+    return porjectAPI.find().then((reponse) => {
+      return reponse.map(item => Object.assign({}, item._serverData, {
+        id: item.id
+      }))
+    });
+  },
   getUnSubmitUsers() {
     return Promise.all([this.getAllUsers(), this.getCurrWeekReport()]).then(
       results => {

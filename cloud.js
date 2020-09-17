@@ -41,7 +41,6 @@ function post(data) {
     let info = '';
     res.on('data', chunk => {
       info += chunk;
-      // console.log(`BODY: ${chunk}`);
     });
     res.on('end', () => {
       writeLog(info);
@@ -79,27 +78,17 @@ AV.Cloud.define('sendEmailwarning', function (request) {
       }
     });
 
-    // console.log(projectList);
-    // console.log(userData)
-    // console.log('=======================');
-    // console.log('周日：准备给未提交用户发送邮件：');
-    // console.log('未提交用户为:');
-    // console.log(JSON.stringify(users, 0, 4));
+    console.log('周日：准备给组长发送邮件：');
+
 
     projectList.forEach(item => {
       let data = userData.find(useritem => useritem.name == item.developer);
       data.value += Number(item.weekTime)
     });
 
-    // post(
-    //   querystring.stringify({
-    //     type: 'all',
-    //     user: JSON.stringify(users)
-    //   })
-    // );
-    console.log(userData);
-
-    console.log('发送处理完成, 耗时' + (+new Date() - d) + 'ms');
+    api.saveWeekTimeReport(userData, d).then(() => {
+      console.log('发送处理完成, 耗时' + (+new Date() - d) + 'ms');
+    })
   });
 });
 
