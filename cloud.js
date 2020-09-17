@@ -80,18 +80,18 @@ AV.Cloud.define('sendEmailwarning', function (request) {
     });
 
     // console.log(projectList);
-    console.log(userData)
+    // console.log(userData)
     // console.log('=======================');
     // console.log('周日：准备给未提交用户发送邮件：');
     // console.log('未提交用户为:');
     // console.log(JSON.stringify(users, 0, 4));
 
-    // projectList.forEach(item => {
-    //   let data = userData.find(useritem => useritem.name == item.developer);
-    //   console.log(data);
-    //   data.value += Number(item.weekTime)
-    // });
-    // console.log(userData);
+    projectList.forEach(item => {
+      let data = userData.find(useritem => useritem.name == item.developer);
+      console.log(data);
+      data.value += Number(item.weekTime)
+    });
+
     // post(
     //   querystring.stringify({
     //     type: 'all',
