@@ -88,7 +88,6 @@ AV.Cloud.define('sendEmailwarning', function (request) {
 
     projectList.forEach(item => {
       let data = userData.find(useritem => useritem.name == item.developer);
-      console.log(data);
       data.value += Number(item.weekTime)
     });
 
@@ -98,6 +97,7 @@ AV.Cloud.define('sendEmailwarning', function (request) {
     //     user: JSON.stringify(users)
     //   })
     // );
+    console.log(userData);
 
     console.log('发送处理完成, 耗时' + (+new Date() - d) + 'ms');
   });
