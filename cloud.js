@@ -65,7 +65,6 @@ AV.Cloud.define('sendEmailwarning', function (request) {
   return api.getAllUsers().then(async users => {
     let projectList = await api.getCurrWeekReport();
     console.log(111)
-    console.log(users)
 
     let userData = users.filter(({
       teamLeader
@@ -81,7 +80,7 @@ AV.Cloud.define('sendEmailwarning', function (request) {
     });
 
     // console.log(projectList);
-    // console.log(userData)
+    console.log(userData)
     // console.log('=======================');
     // console.log('周日：准备给未提交用户发送邮件：');
     // console.log('未提交用户为:');
