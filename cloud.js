@@ -80,10 +80,10 @@ AV.Cloud.define('sendEmailwarning', function (request) {
 
     console.log('周日：准备给组长发送邮件：');
 
-
     projectList.forEach(item => {
       let data = userData.find(useritem => useritem.name == item.developer);
       data.value += Number(item.weekTime)
+      data.project += item.projectName + ','
     });
 
     api.saveWeekTimeReport(userData, d).then(() => {
