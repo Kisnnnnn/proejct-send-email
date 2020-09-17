@@ -38,11 +38,11 @@ module.exports = {
 
   },
   emptyWeekReport() {
-    const query = new AV.Query('weekTimeList');
-    
+    const query = new AV.Query('projectList');
+
     return query.find().then((todos) => {
       todos.forEach((todo) => {
-        todo.set('weekData', []);
+        todo.set('weekTime', "0");
       });
       AV.Object.saveAll(todos);
     });
