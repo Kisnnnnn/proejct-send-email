@@ -79,6 +79,7 @@ AV.Cloud.define('sendEmailwarning', function (request) {
     });
 
     // console.log(projectList);
+    console.log(userData)
     console.log('=======================');
     // console.log('周日：准备给未提交用户发送邮件：');
     // console.log('未提交用户为:');
