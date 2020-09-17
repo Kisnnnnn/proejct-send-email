@@ -30,7 +30,7 @@ module.exports = {
       weekData: userData
     };
 
-    weekAPI.set(rtn);
+    weekAPI.set(data);
     return weekAPI.save().then((resData) => {
       return resData
     }, (error) => {});
