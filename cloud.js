@@ -68,6 +68,7 @@ AV.Cloud.define('sendEmailwarning', function (request) {
     let userData = users.filter(({
       teamLeader
     }) => teamLeader != 4);
+    console.log(userData)
 
     userData = userData.map(({
       displayName
