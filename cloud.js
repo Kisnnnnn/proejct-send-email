@@ -63,7 +63,6 @@ AV.Cloud.define('sendEmailwarning', function (request) {
   let d = new Date();
   return api.getAllUsers().then(async users => {
     let projectList = await api.getCurrWeekReport();
-    console.log(111)
 
     let userData = users.filter(({
       teamLeader

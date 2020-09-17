@@ -21,6 +21,7 @@ module.exports = {
       }))
     });
   },
+
   // 保存本周工时
   saveWeekTimeReport(userData, d) {
     const week = AV.Object.extend('weekTimeList');
@@ -37,16 +38,10 @@ module.exports = {
 
   },
   emptyWeekReport() {
-    console.log('projectList');
-    const porjectAPI = new AV.Query('projectList');
-
-    porjectAPI.equalTo('isArchive', false);
-
-    return porjectAPI.find().then((reponse) => {
-      return reponse.map(item => Object.assign({}, item._serverData, {
-        id: item.id
-      }))
-    });
+    const weekAPI = AV.Object.createWithoutData('weekTimeList');
+    weekAPI.set('weekData', []);
+    
+    return weekAPI.save();
   },
   getUnSubmitUsers() {
     return Promise.all([this.getAllUsers(), this.getCurrWeekReport()]).then(
