@@ -62,13 +62,14 @@ function post(data) {
 AV.Cloud.define('sendEmailwarning', function (request) {
   console.log('准备处理发送邮件');
   let d = new Date();
-  console.log(d);
   return api.getAllUsers().then(async users => {
     let projectList = await api.getCurrWeekReport();
+    console.log(111)
+    console.log(users)
+
     let userData = users.filter(({
       teamLeader
     }) => teamLeader != 4);
-    console.log(userData)
 
     userData = userData.map(({
       displayName
@@ -80,8 +81,8 @@ AV.Cloud.define('sendEmailwarning', function (request) {
     });
 
     // console.log(projectList);
-    console.log(userData)
-    console.log('=======================');
+    // console.log(userData)
+    // console.log('=======================');
     // console.log('周日：准备给未提交用户发送邮件：');
     // console.log('未提交用户为:');
     // console.log(JSON.stringify(users, 0, 4));
