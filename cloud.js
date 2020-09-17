@@ -78,14 +78,14 @@ AV.Cloud.define('sendEmailwarning', function (request) {
       }
     });
 
-    console.log(projectList);
+    // console.log(projectList);
     console.log('=======================');
-    console.log('周日：准备给未提交用户发送邮件：');
-    console.log('未提交用户为:');
-    console.log(JSON.stringify(users, 0, 4));
+    // console.log('周日：准备给未提交用户发送邮件：');
+    // console.log('未提交用户为:');
+    // console.log(JSON.stringify(users, 0, 4));
 
     projectList.forEach(item => {
-      let data = personData.find(item => item.name);
+      let data = userData.find(item => item.name);
       data.value += Number(item.weekTime)
     });
     console.log(userData);
