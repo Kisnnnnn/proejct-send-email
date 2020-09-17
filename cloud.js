@@ -86,12 +86,12 @@ AV.Cloud.define('sendEmailwarning', function (request) {
     // console.log('未提交用户为:');
     // console.log(JSON.stringify(users, 0, 4));
 
-    projectList.forEach(item => {
-      let data = userData.find(useritem => useritem.name == item.developer);
-      console.log(data);
-      data.value += Number(item.weekTime)
-    });
-    console.log(userData);
+    // projectList.forEach(item => {
+    //   let data = userData.find(useritem => useritem.name == item.developer);
+    //   console.log(data);
+    //   data.value += Number(item.weekTime)
+    // });
+    // console.log(userData);
     // post(
     //   querystring.stringify({
     //     type: 'all',
