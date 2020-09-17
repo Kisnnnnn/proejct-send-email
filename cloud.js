@@ -88,7 +88,6 @@ AV.Cloud.define('sendEmailwarning', function (request) {
 
     api.saveWeekTimeReport(userData, d).then(() => {
       console.log('发送处理完成, 耗时' + (+new Date() - d) + 'ms');
-      // 
       console.log('开清空况数据');
       api.emptyWeekReport()
     })

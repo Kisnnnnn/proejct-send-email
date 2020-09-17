@@ -40,6 +40,7 @@ module.exports = {
   emptyWeekReport() {
     const query = new AV.Query('projectList');
 
+    
     return query.find().then((todos) => {
       todos.forEach((todo) => {
         todo.set('weekTime', "0");
