@@ -85,7 +85,8 @@ AV.Cloud.define('sendEmailwarning', function (request) {
     // console.log(JSON.stringify(users, 0, 4));
 
     projectList.forEach(item => {
-      let data = userData.find(item => item.name);
+      let data = userData.find(useritem => useritem.name == item.developer);
+      console.log(data);
       data.value += Number(item.weekTime)
     });
     console.log(userData);
